@@ -1,9 +1,10 @@
 <?php
 
-class GARY_HelloWorld extends ET_Builder_Module {
+class GARY_PhotoGridParent extends ET_Builder_Module {
 
-	public $slug       = 'gary_hello_world';
+	public $slug       = 'gary_photo_grid';
 	public $vb_support = 'on';
+	public $child_slug = "gary_photo_grid_child";
 	/**
 	* Enqueues non-minified, hot reloaded javascript bundles.
 	*
@@ -27,24 +28,40 @@ class GARY_HelloWorld extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name = esc_html__( 'Hello World', 'gary-photo_grid' );
+		$this->name = esc_html__( 'Photo Grid', 'gary-photo_grid' );
 	}
 
 	public function get_fields() {
 		return array(
-			'content' => array(
-				'label'           => esc_html__( 'Content', 'gary-photo_grid' ),
-				'type'            => 'tiny_mce',
+			'shape_slider' => array(
+				'label'           => esc_html__( 'Aspect Ratio', 'gary-photo_grid' ),
+				'type'            => 'range',
+				'range_setting'		=> array(
+						'min'		=>	'50%',
+						'max'		=>	'200%',
+						'step'	=>	'10%',
+				),
+				'fixed_unit'			=> '%',
+				'default'					=>	'100%',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'gary-photo_grid' ),
+				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'gary-photo_grid_child' ),
 				'toggle_slug'     => 'main_content',
 			),
 		);
 	}
 
 	public function render( $attrs, $content = null, $render_slug ) {
-		return sprintf( '<h1>%1$s</h1>', $this->props['content'] );
+		ET_Builder_Element::set_style($render_slug, array(
+			'selector'			=>	'.grid_card',
+			'declaration'		=>	"padding-top: {$this->props['shape_slider']};"
+		));
+
+		ET_Builder_Element::set_style($render_slug, array(
+			'selector'			=>	'.grid_card a',
+			'declaration'		=>	"margin-top: -{$this->props['shape_slider']};"
+		));
+		return $this->content;
 	}
 }
 
-new GARY_HelloWorld;
+new GARY_PhotoGridParent;

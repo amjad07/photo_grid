@@ -1,3 +1,4 @@
-import HelloWorld from './HelloWorld/HelloWorld';
+import photoGrid from './photoGrid/photoGrid';
+import photoGridChild from './photoGridChild/photoGridChild';
 
-export default [HelloWorld];
+export default [photoGrid, photoGridChild];
