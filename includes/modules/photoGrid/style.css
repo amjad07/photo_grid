@@ -5,9 +5,9 @@
     grid-column-gap: 10px;
 }
 
-.gary_photo_grid_child {
-    margin-bottom: 0px;
-}
+.gary_photo_grid_child{
+    margin-bottom:0px !important;
+    }
 
 .grid_card {
     display: flex;

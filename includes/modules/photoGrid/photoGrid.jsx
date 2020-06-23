@@ -11,14 +11,32 @@ class photoGrid extends Component {
 
   static css(props){
     var css = [];
+
+
+
     css.push([{
-      selector    :   '.grid_card',
+      selector    :   '%%order_class%% .grid_card',
       declaration :   `padding-top: ${props.shape_slider};`,
     }]);
 
     css.push([{
-      selector    :   '.grid_card a',
+      selector    :   '%%order_class%%  .grid_card a',
       declaration :   `margin-top: -${props.shape_slider};`,
+    }]);
+
+    css.push([{
+      selector    :   '.gary_photo_grid > .et_pb_module_inner',
+      declaration :   `grid-row-gap: ${props.gap_slider};`,
+    }]);
+
+    css.push([{
+      selector    :   '.gary_photo_grid > .et_pb_module_inner',
+      declaration :   `grid-column-gap: ${props.gap_slider};`,
+    }]);
+
+    css.push([{
+      selector    :   '.gary_photo_grid > .et_pb_module_inner',
+      declaration :   `grid-template-columns: ${props.template_columns};`,
     }]);
 
     return css;
