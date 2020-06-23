@@ -13,12 +13,12 @@ class photoGrid extends Component {
     var css = [];
     css.push([{
       selector    :   '.grid_card',
-      declaration :   `padding-top: ${props.shape_slider}`,
+      declaration :   `padding-top: ${props.shape_slider};`,
     }]);
 
     css.push([{
       selector    :   '.grid_card a',
-      declaration :   `margin-top: -${props.shape_slider}`,
+      declaration :   `margin-top: -${props.shape_slider};`,
     }]);
 
     return css;
